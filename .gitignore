@@ -2,3 +2,5 @@ npm-debug.log
 /node_modules
 /plugins
 /platforms/android/app/build/
+platforms/android/.gradle/
+platforms/android/CordovaLib/build/
