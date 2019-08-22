@@ -54,19 +54,25 @@ var app = {
         var eventDict4 = {
             "attributeKeyDecimal" : 2.34
         }
-        moe.trackEvent("Event4",eventDict4)
+
+        moe.trackEvent("Event4",eventDict4) 
 
         moe.trackEvent("Event5",null)
 
         moe.setExistingUser(true)
-
-        moe.setUserAttribute("USER_ATTRIBUTE_UNIQUE_ID", "ID1")
+        //this value is just for reference as a sample value,Please don't hard-code this value. Use actual values.
+        moe.setUserAttribute("USER_ATTRIBUTE_UNIQUE_ID", "ID1") 
+        //this value is just for reference as a sample value,Please don't hard-code this value. Use actual values.
         moe.setUserAttribute("TEST_NUMBER", 23)
+        //this value is just for reference as a sample value,Please don't hard-code this value. Use actual values.
         moe.setUserAttribute("TEST_BOOL", true)
+        //this value is just for reference as a sample value,Please don't hard-code this value. Use actual values.
         moe.setUserAttribute("TEST_STRING", "HELLO")
-
+        //this value is just for reference as a sample value,Please don't hard-code this value. Use actual values.
         moe.setUserAttributeTimestamp("TEST_TIME",1470288682)
+        //this value is just for reference as a sample value,Please don't hard-code this value. Use actual values.
         moe.setAlias("ID2")
+        //this value is just for reference as a sample value,Please don't hard-code this value. Use actual values.
         moe.setUserAttributeLocation("TEST_LOCATION",72.0089,54.0009)
 
         moe.showInApp()
