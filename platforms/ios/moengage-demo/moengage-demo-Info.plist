@@ -28,11 +28,6 @@
     <string>1.0.0</string>
     <key>LSRequiresIPhoneOS</key>
     <true/>
-    <key>MoEngage</key>
-    <dict>
-      <key>MoEngage_APP_ID</key>
-      <string>DAO6UGZ73D9RTK8B5W96TPYN</string>
-    </dict>
     <key>NSAppTransportSecurity</key>
     <dict>
       <key>NSAllowsArbitraryLoads</key>
@@ -61,5 +56,10 @@
       <string>UIInterfaceOrientationPortraitUpsideDown</string>
       <string>UIInterfaceOrientationLandscapeRight</string>
     </array>
+    <key>MoEngage</key>
+    <dict>
+      <key>MoEngage_APP_ID</key>
+      <string>asa</string>
+    </dict>
   </dict>
 </plist>

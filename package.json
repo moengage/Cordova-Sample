@@ -10,20 +10,16 @@
     "author": "Apache Cordova Team",
     "license": "Apache-2.0",
     "dependencies": {
-        "cordova-android": "^7.0.0",
-        "cordova-moengage-fcm-dependency": "^1.0.0",
-        "cordova-moengage-fcm-listeners": "^1.0.0",
+        "cordova-android": "^8.0.0",
         "cordova-plugin-whitelist": "^1.3.3",
-        "moengagesdk": "^4.0.0"
+        "moengagesdk": "file:../../MoEngageRepos/Cordova-SDK/core"
     },
     "cordova": {
         "plugins": {
             "cordova-plugin-whitelist": {},
             "cordova-plugin-moengage": {
-                "APP_ID": "VAMFYV9TB2DQK96O1F96OB1Q"
-            },
-            "cordova-moengage-fcm-dependency": {},
-            "cordova-moengage-fcm-listeners": {}
+                "APP_ID": "asda"
+            }
         },
         "platforms": [
             "android"

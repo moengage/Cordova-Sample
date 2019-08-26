@@ -302,23 +302,6 @@ exec(success, fail, 'MoEngage', 'init', [{"init":"init"}]);
 }
 
 /**
- * Use this method to redirect the data tracked
- * @warning Consult with MoEngage team before using this method for redirecting the data
- */
- MoECordova.prototype.setDataRedirection = function(shouldRedirectData) {
-  console.log("inside enableDataRedirection");
-  var success = function(result) {
-      console.log("enableDataRedirection : success");
-  };
-
-  var fail = function(msg) {
-      console.log("enableDataRedirection : fail");
-  };
-
-  exec(success, fail, 'MoEngage', 'enableDataRedirection', [{"set_redirect" : shouldRedirectData}]);
-}
-
-/**
  * Use this method to update User Attribute Unique ID of a user
  * @param alias The updated Unique ID for the user 
  */

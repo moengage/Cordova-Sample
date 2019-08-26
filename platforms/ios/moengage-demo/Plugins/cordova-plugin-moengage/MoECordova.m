@@ -60,7 +60,6 @@
     [[MoEngage sharedInstance] handleInAppMessage];
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-    
 }
 
 #pragma mark- Reset method
@@ -120,7 +119,7 @@
                 }
             }
             else{
-                 pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"User Attribute name or value was null"];
+                pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"User Attribute name or value was null"];
             }
             
             [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
@@ -138,29 +137,29 @@
     __block CDVPluginResult* pluginResult = nil;
     if (command.arguments.count >=1) {
         [self.commandDelegate runInBackground:^{
-        NSDictionary* userAttributeDict = [command.arguments objectAtIndex:0];
-        if (userAttributeDict!=nil) {
-            
-            NSString* userAttributeName = [self validObjectForKey:@"attribute_name" inDictionary:userAttributeDict];
-            id userAttributeLatVal  = [self validObjectForKey:@"attribute_lat_value" inDictionary:userAttributeDict];
-            id userAttributeLonVal  = [self validObjectForKey:@"attribute_lon_value" inDictionary:userAttributeDict];
-            
-            if (userAttributeName != nil && userAttributeLonVal !=nil && userAttributeLatVal != nil) {
-                [[MoEngage sharedInstance] setUserAttributeLocationLatitude:[userAttributeLatVal doubleValue] longitude:[userAttributeLonVal doubleValue] forKey:userAttributeName];
+            NSDictionary* userAttributeDict = [command.arguments objectAtIndex:0];
+            if (userAttributeDict!=nil) {
                 
-                NSString* message = [NSString stringWithFormat:@"%@ tracked with Value %@ %@", userAttributeName, userAttributeLatVal, userAttributeLonVal];
-                pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:message];
-            } else {
-                pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"User Attribute name or Lat,Lon value was null"];
+                NSString* userAttributeName = [self validObjectForKey:@"attribute_name" inDictionary:userAttributeDict];
+                id userAttributeLatVal  = [self validObjectForKey:@"attribute_lat_value" inDictionary:userAttributeDict];
+                id userAttributeLonVal  = [self validObjectForKey:@"attribute_lon_value" inDictionary:userAttributeDict];
+                
+                if (userAttributeName != nil && userAttributeLonVal !=nil && userAttributeLatVal != nil) {
+                    [[MoEngage sharedInstance] setUserAttributeLocationLatitude:[userAttributeLatVal doubleValue] longitude:[userAttributeLonVal doubleValue] forKey:userAttributeName];
+                    
+                    NSString* message = [NSString stringWithFormat:@"%@ tracked with Value %@ %@", userAttributeName, userAttributeLatVal, userAttributeLonVal];
+                    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:message];
+                } else {
+                    pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"User Attribute name or Lat,Lon value was null"];
+                }
             }
-        }
-        else{
-            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"User Attribute name or value was null"];
-        }
+            else{
+                pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"User Attribute name or value was null"];
+            }
+            
+            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+        }];
         
-        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-    }];
-
     }
     else{
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Insufficient arguments"];
@@ -196,7 +195,7 @@
             
             [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
         }];
-
+        
     }
     else{
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Insufficient arguments"];
@@ -250,18 +249,19 @@
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"Insufficient arguments"];
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }
-
+    
 }
 
 
 - (void)registerForPushNotification:(CDVInvokedUrlCommand*)command{
     if (@available(iOS 10.0, *)) {
-        [[MoEngage sharedInstance] registerForRemoteNotificationWithCategories:nil withUserNotificationCenterDelegate:self];
+        [[MoEngage sharedInstance] registerForRemoteNotificationWithCategories:nil withUserNotificationCenterDelegate:[UIApplication sharedApplication].delegate];
     } else {
         [[MoEngage sharedInstance] registerForRemoteNotificationForBelowiOS10WithCategories:nil];
     }
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    
 }
 
 - (void)setAlias:(CDVInvokedUrlCommand*)command{
@@ -300,9 +300,11 @@
 
 
 -(void)pushNotificationClickedWithUserInfo:(NSDictionary*)userInfo{
+    
     NSMutableDictionary* message = [NSMutableDictionary dictionaryWithCapacity:2];
     [message setObject:@"pushClick" forKey:@"type"];
     [message setObject:userInfo forKey:@"notificationPayload"];
+    
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:message];
     [pluginResult setKeepCallbackAsBool:YES];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:self.callbackId];

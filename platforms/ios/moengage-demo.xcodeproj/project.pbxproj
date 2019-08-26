@@ -12,10 +12,9 @@
 		301BF552109A68D80062928A /* libCordova.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 301BF535109A57CC0062928A /* libCordova.a */; };
 		302D95F114D2391D003F00A1 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 302D95EF14D2391D003F00A1 /* MainViewController.m */; };
 		302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 302D95F014D2391D003F00A1 /* MainViewController.xib */; };
-		43AE1146F47E47FAB7CBFF7A /* MoECordova.m in Sources */ = {isa = PBXBuildFile; fileRef = A71EC80B13D14589A9BA36AE /* MoECordova.m */; };
 		6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */; };
-		A339B92005744A02B19428C8 /* AppDelegate+MoEngage.m in Sources */ = {isa = PBXBuildFile; fileRef = 836D6F49BB3F4EA58D98DDC8 /* AppDelegate+MoEngage.m */; };
-		AF70B30A20E3D58200096B95 /* MoEngage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AF70B30720E3D57300096B95 /* MoEngage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		FC6B2CA9B00B486AB5BA69A8 /* MoECordova.m in Sources */ = {isa = PBXBuildFile; fileRef = B758AFF0051A4755BA46EDE6 /* MoECordova.m */; };
+		66B82E7E60034F2CB37C0234 /* AppDelegate+MoEngage.m in Sources */ = {isa = PBXBuildFile; fileRef = E4C7D23D95B04FAFBADA89A1 /* AppDelegate+MoEngage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +53,6 @@
 		1D3623240D0F684500981E51 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1D6058910D05DD3D006BFB54 /* moengage-demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "moengage-demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		25D5FE2EE14F40A2983DD092 /* MoECordova.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = MoECordova.h; path = "cordova-plugin-moengage/MoECordova.h"; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		301BF52D109A57CC0062928A /* CordovaLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CordovaLib.xcodeproj; path = CordovaLib/CordovaLib.xcodeproj; sourceTree = "<group>"; };
 		301BF56E109A69640062928A /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; path = www; sourceTree = SOURCE_ROOT; };
@@ -65,17 +63,17 @@
 		3047A5101AB8059700498E2A /* build-release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "build-release.xcconfig"; path = "cordova/build-release.xcconfig"; sourceTree = SOURCE_ROOT; };
 		3047A5111AB8059700498E2A /* build.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = build.xcconfig; path = cordova/build.xcconfig; sourceTree = SOURCE_ROOT; };
 		32CA4F630368D1EE00C91783 /* moengage-demo-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "moengage-demo-Prefix.pch"; sourceTree = "<group>"; };
-		69D5D909163E40788531C155 /* MoEngage.framework */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = wrapper.framework; name = MoEngage.framework; path = System/Library/Frameworks/MoEngage.framework; sourceTree = SDKROOT; };
 		6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CDVLaunchScreen.storyboard; path = "moengage-demo/CDVLaunchScreen.storyboard"; sourceTree = SOURCE_ROOT; };
-		836D6F49BB3F4EA58D98DDC8 /* AppDelegate+MoEngage.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = "AppDelegate+MoEngage.m"; path = "cordova-plugin-moengage/AppDelegate+MoEngage.m"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* moengage-demo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "moengage-demo-Info.plist"; path = "moengage-demo/moengage-demo-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = SOURCE_ROOT; };
-		A71EC80B13D14589A9BA36AE /* MoECordova.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = MoECordova.m; path = "cordova-plugin-moengage/MoECordova.m"; sourceTree = "<group>"; };
 		AF70B30720E3D57300096B95 /* MoEngage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MoEngage.framework; path = "moengage-demo/Plugins/cordova-plugin-moengage/MoEngage.framework"; sourceTree = "<group>"; };
-		BABF820AE6984717A43BB483 /* AppDelegate+MoEngage.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = "AppDelegate+MoEngage.h"; path = "cordova-plugin-moengage/AppDelegate+MoEngage.h"; sourceTree = "<group>"; };
 		EB87FDF31871DA8E0020F90C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../../www; sourceTree = "<group>"; };
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
 		ED33DF2A687741AEAF9F8254 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "moengage-demo/config.xml"; sourceTree = "<group>"; };
+		B758AFF0051A4755BA46EDE6 /* MoECordova.m */ = {isa = PBXFileReference; name = "MoECordova.m"; path = "cordova-plugin-moengage/MoECordova.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		E4C7D23D95B04FAFBADA89A1 /* AppDelegate+MoEngage.m */ = {isa = PBXFileReference; name = "AppDelegate+MoEngage.m"; path = "cordova-plugin-moengage/AppDelegate+MoEngage.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		3C525F605FE44A75A780EFC8 /* MoECordova.h */ = {isa = PBXFileReference; name = "MoECordova.h"; path = "cordova-plugin-moengage/MoECordova.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		B9A847C7834B46C297A2EEEA /* AppDelegate+MoEngage.h */ = {isa = PBXFileReference; name = "AppDelegate+MoEngage.h"; path = "cordova-plugin-moengage/AppDelegate+MoEngage.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,7 +153,6 @@
 			isa = PBXGroup;
 			children = (
 				AF70B30720E3D57300096B95 /* MoEngage.framework */,
-				69D5D909163E40788531C155 /* MoEngage.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -181,10 +178,10 @@
 		307C750510C5A3420062BCA9 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				A71EC80B13D14589A9BA36AE /* MoECordova.m */,
-				836D6F49BB3F4EA58D98DDC8 /* AppDelegate+MoEngage.m */,
-				25D5FE2EE14F40A2983DD092 /* MoECordova.h */,
-				BABF820AE6984717A43BB483 /* AppDelegate+MoEngage.h */,
+				B758AFF0051A4755BA46EDE6 /* MoECordova.m */,
+				E4C7D23D95B04FAFBADA89A1 /* AppDelegate+MoEngage.m */,
+				3C525F605FE44A75A780EFC8 /* MoECordova.h */,
+				B9A847C7834B46C297A2EEEA /* AppDelegate+MoEngage.h */,
 			);
 			name = Plugins;
 			path = "moengage-demo/Plugins";
@@ -314,8 +311,8 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
-				43AE1146F47E47FAB7CBFF7A /* MoECordova.m in Sources */,
-				A339B92005744A02B19428C8 /* AppDelegate+MoEngage.m in Sources */,
+				FC6B2CA9B00B486AB5BA69A8 /* MoECordova.m in Sources */,
+				66B82E7E60034F2CB37C0234 /* AppDelegate+MoEngage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

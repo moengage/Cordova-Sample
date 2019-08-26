@@ -3,9 +3,7 @@ repositories {
 }
 
 dependencies {
-  compile ('com.moengage:moe-android-sdk:9.1.03'){
-    exclude group: 'com.moengage', module: 'moe-push-firebase'
-  }
+  compileOnly "com.moengage:moe-android-sdk:9.6.00"
 }
 
 ext.postBuildExtras = {

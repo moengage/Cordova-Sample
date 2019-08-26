@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import com.moe.pushlibrary.MoEHelper;
 import com.moe.pushlibrary.models.GeoLocation;
+import com.moengage.inapp.InAppManager;
 import com.moengage.push.PushManager;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -238,5 +239,10 @@ public class MoECordova extends CordovaPlugin {
 
   public static boolean isActive() {
     return cordovaWebView != null;
+  }
+
+  public static void registerNativeCallbacks(){
+    PushManager.getInstance().setMessageListener(new CordovaMessageListener());
+    InAppManager.getInstance().setInAppListener(new CordovaInAppListener());
   }
 }

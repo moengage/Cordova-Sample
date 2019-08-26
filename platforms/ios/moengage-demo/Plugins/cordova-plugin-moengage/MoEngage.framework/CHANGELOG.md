@@ -3,6 +3,23 @@
 
 ## Change Log:
 
+### Version 4.2.3  *(13th August, 2018)*
+-------------------------------------------
+* Real-time Trigger Campaigns Bug Fix : Wrong push notification payload was posted in offline scenarios where event personalization was used.
+
+### Version 4.2.2  *(26th July, 2018)*
+-------------------------------------------
+* Delegate method `inboxCellSelectedWithPushDict:`  provided for getting Push Notification Payload on clicking notification in SDK inbox.
+* Now for processing inbox notifications clicks the same way as push notification clicks set `shouldProcessNotificationActions` of MOInboxViewController instance to `true`.
+
+### Version 4.2.1  *(10th July, 2018)*
+-------------------------------------------
+* Network request and response caching in Cache.db disabled.
+
+### Version 4.2.0  *(22nd June, 2018)*
+-------------------------------------------
+* Changed routes of sync API calls in SDK.
+
 ### Version 4.1.1  *(12th June, 2018)*
 -------------------------------------------
 * App Exit Event being tracked for using Real-time triggers when app goes to background.

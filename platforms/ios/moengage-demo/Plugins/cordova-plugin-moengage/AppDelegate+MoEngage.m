@@ -15,10 +15,16 @@
 
 #define MoEngage_APP_ID_KEY                 @"MoEngage_APP_ID"
 #define MoEngage_DICT_KEY                   @"MoEngage"
-#define SDK_Version                         @"300"
+#define SDK_Version                         @"400"
 
+
+static char pendingPushPayloadKey;
+static char isAppInActiveKey;
 
 @interface  AppDelegate (MoEngageNotifications) <MOInAppDelegate>
+
+@property(retain, nonatomic) NSNumber* isAppInActive;
+@property(retain, nonatomic) NSDictionary* pendingPushPayload;
 
 @end
 
@@ -64,6 +70,12 @@
 - (BOOL)moengage_swizzled_application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
     //Add Observer for app termination
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moengage_applicationWillTerminate:) name:UIApplicationWillTerminateNotification object:nil];
+    
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(moengage_applicationDidBecomeActive:)
+                                                name:UIApplicationDidBecomeActiveNotification
+                                              object:nil];
+    
     [self initializeApplication:application andLaunchOptions:launchOptions];
     
     static dispatch_once_t onceToken;
@@ -157,6 +169,15 @@
     
     [MoEngage sharedInstance].delegate = self;
     
+    if([application isRegisteredForRemoteNotifications]){
+        if (@available(iOS 10.0, *)) {
+            [[MoEngage sharedInstance] registerForRemoteNotificationWithCategories:nil withUserNotificationCenterDelegate:self];
+        } else {
+            [[MoEngage sharedInstance] registerForRemoteNotificationForBelowiOS10WithCategories:nil];
+        }
+    }
+    
+    
 }
 
 -(NSString*)getMoEngageAppID {
@@ -189,6 +210,21 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIApplicationWillTerminateNotification object:nil];
 }
 
+
+- (void)moengage_applicationDidBecomeActive:(NSNotification *)notif {
+    [self performSelector:@selector(delayedNotificationCallback) withObject:nil afterDelay:1.5];
+}
+
+-(void)delayedNotificationCallback{
+    if (self.pendingPushPayload && ([self.isAppInActive boolValue] == true)) {
+        NSDictionary* pushDictionary = [self.pendingPushPayload copy];
+        NSLog(@"Push Payload : %@",pushDictionary);
+        [[NSNotificationCenter defaultCenter] postNotificationName:MoEngage_Notification_Received_Notification object:[UIApplication sharedApplication] userInfo:pushDictionary];
+        [self callbackForNotificationReceived:pushDictionary];
+        self.pendingPushPayload = nil;
+        self.isAppInActive = nil;
+    }
+}
 
 #pragma mark- Register For Push methods
 
@@ -287,8 +323,12 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
          withCompletionHandler:(void (^)())completionHandler{
     [[MoEngage sharedInstance] userNotificationCenter:center didReceiveNotificationResponse:response];
     NSDictionary *pushDictionary = response.notification.request.content.userInfo;
+    if ([UIApplication sharedApplication].applicationState == UIApplicationStateInactive) {
+        self.pendingPushPayload = response.notification.request.content.userInfo;
+        self.isAppInActive = [NSNumber numberWithBool:YES];
+    }
     
-    if (pushDictionary) {
+    if (pushDictionary && ([self.isAppInActive boolValue] == false)) {
         [[NSNotificationCenter defaultCenter] postNotificationName:MoEngage_Notification_Received_Notification object:[UIApplication sharedApplication] userInfo:pushDictionary];
         [self callbackForNotificationReceived:pushDictionary];
     }
@@ -298,7 +338,7 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
 
 -(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler{
     completionHandler((UNNotificationPresentationOptionSound
-                       | UNNotificationPresentationOptionAlert ));
+                       | UNNotificationPresentationOptionAlert));
 }
 
 #pragma mark- InApp Delegate methods
@@ -366,6 +406,34 @@ didReceiveNotificationResponse:(UNNotificationResponse *)response
                           ntohl(tokenBytes[3]), ntohl(tokenBytes[4]), ntohl(tokenBytes[5]),
                           ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
     return hexToken;
+}
+
+
+//Since you can't define a property in a category
+- (NSMutableArray *)pendingPushPayload
+{
+    return objc_getAssociatedObject(self, &pendingPushPayloadKey);
+}
+
+- (void)setPendingPushPayload:(NSDictionary *)aDictionary
+{
+    objc_setAssociatedObject(self, &pendingPushPayloadKey, aDictionary, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSNumber *)isAppInActive
+{
+    return objc_getAssociatedObject(self, &isAppInActiveKey);
+}
+
+- (void)setIsAppInActive:(NSNumber *)aNumber
+{
+    objc_setAssociatedObject(self, &isAppInActiveKey, aNumber, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (void)dealloc
+{
+    self.pendingPushPayload = nil; // clear the association and release the object
+    self.isAppInActive = nil;
 }
 
 @end
