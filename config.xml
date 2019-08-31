@@ -30,5 +30,4 @@
     </plugin>
     <plugin name="cordova-moengage-fcm-dependency" spec="^1.0.0" />
     <plugin name="cordova-moengage-fcm-listeners" spec="^1.0.0" />
-    <engine name="android" spec="^7.0.0" />
 </widget>
