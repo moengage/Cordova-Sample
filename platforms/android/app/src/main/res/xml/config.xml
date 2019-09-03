@@ -4,9 +4,6 @@
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
     </feature>
-    <feature name="MoEngage">
-        <param name="android-package" value="com.moengage.cordova.MoECordova" />
-    </feature>
     <name>moengage-demo</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
@@ -26,4 +23,7 @@
     <resource-file src="google-services.json" target="app/google-services.json" />
     <framework src="com.google.firebase:firebase-messaging:17.0.0" />
     <preference name="loglevel" value="DEBUG" />
+    <feature name="MoEngage">
+        <param name="android-package" value="com.moengage.cordova.MoECordova" />
+    </feature>
 </widget>
