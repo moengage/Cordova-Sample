@@ -26,4 +26,5 @@
     <feature name="MoEngage">
         <param name="android-package" value="com.moengage.cordova.MoECordova" />
     </feature>
+    <preference name="android-minSdkVersion" value="19"/>
 </widget>
